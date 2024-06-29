@@ -1,6 +1,6 @@
 # Filter System Application
 
-This is a Spring Boot application for managing transactions. It uses an H2 in-memory database and Flyway for database migrations.
+This is a Spring Boot application for managing filters and it's criteria list. It uses an H2 in-memory database and Flyway for database migrations.
 
 ## Setup Instructions
 
