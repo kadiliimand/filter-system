@@ -1,0 +1,37 @@
+.form-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.label {
+	margin-right: 12px;
+	font-weight: bold;
+}
+
+.form-content input[type="text"],
+.form-content input[type="number"] {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.criteria-group {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	flex-direction: row;
+	margin-bottom: 1rem;
+	width: 100%;
+}
+
+.criteria-group select,
+.criteria-group input {
+	flex: 1;
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 100%;
+	box-sizing: border-box;
+}

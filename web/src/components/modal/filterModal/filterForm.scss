@@ -1,0 +1,92 @@
+.form-group {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.form-group label {
+	display: block;
+	margin-right: 12px;
+	font-weight: bold;
+}
+
+.input[type="text"] {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.radio-group-form {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.radio-group {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+
+.radio-group label {
+	display: flex;
+	align-items: center;
+	font-weight: 400;
+}
+
+.radio-group input[type="radio"] {
+	margin-right: 0.5rem;
+}
+
+.required {
+	color: red;
+	margin-left: 5px;
+	vertical-align: super;
+	font-size: 1rem;
+}
+
+.form-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 1rem;
+}
+
+.form-table td {
+	padding: 0.5rem;
+}
+
+.form-table .label {
+	text-align: right;
+	padding-right: 10px;
+}
+
+.form-table .criteria-group {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	flex-direction: row;
+	margin-bottom: 1rem;
+}
+
+.form-table .criteria-group select,
+.form-table .criteria-group input {
+	flex: 1;
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 100%;
+}
+
+.form-table .criteria-group button {
+	background: red;
+	border: none;
+	color: white;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+.criteria-label {
+	display: flex;
+	margin-top: 8px;
+}
