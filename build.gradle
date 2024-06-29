@@ -1,0 +1,77 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.1'
+    id 'io.spring.dependency-management' version '1.1.5'
+    id 'com.github.node-gradle.node' version '3.1.0'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    testCompileOnly {
+        extendsFrom testAnnotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'org.hibernate.validator:hibernate-validator:6.0.13.Final'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+node {
+    version = '18.0.0'
+    npmVersion = '8.0.0'
+    download = true
+}
+
+task npmInstallWeb(type: NpmTask) {
+    args = ['install']
+    workingDir = file('web')
+}
+
+task buildFrontend(type: NpmTask) {
+    dependsOn npmInstallWeb
+    args = ['run', 'build']
+    workingDir = file('web')
+    outputs.dir file('web/build')
+}
+
+processResources {
+    dependsOn buildFrontend
+    from('web/build') {
+        into 'static'
+    }
+}
+
+bootJar {
+    dependsOn buildFrontend
+}
